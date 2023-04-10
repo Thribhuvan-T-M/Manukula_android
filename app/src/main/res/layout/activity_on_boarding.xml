@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:background="@color/primaryColor"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".Common.OnBoardingActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coming Soon"
         android:fontFamily="@font/audiowide"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="117dp" />
+        android:text="@string/coming_soon"
+        android:padding="12dp"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
