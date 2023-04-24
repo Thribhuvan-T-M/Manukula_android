@@ -135,9 +135,6 @@ public class SignUpActivity extends AppCompatActivity {
         if (password.length() < 8) {
             return false;
         }
-        if (!password.matches(".*[A-Z].*")) {
-            return false;
-        }
         if (!password.matches(".*[a-z].*")) {
             return false;
         }

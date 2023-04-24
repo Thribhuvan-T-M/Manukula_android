@@ -15,4 +15,9 @@
     <string name="already_have_an_account">Already Have An Account?</string>
     <string name="login">Login</string>
     <string name="login_quote">“Inspiration does exist, but it must find you working.”</string>
+    <string name="Dont_have_an_account" />
+    <string name="register">Register</string>
+    <string name="dont_t_have_an_account">Dont\'t have an account?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_with">Login With:</string>
 </resources>
