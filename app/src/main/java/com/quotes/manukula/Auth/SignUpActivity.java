@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.quotes.manukula.Core.DashboardActivity;
@@ -21,6 +22,8 @@ import com.quotes.manukula.R;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -66,14 +69,26 @@ public class SignUpActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(fullNameET.getText().toString())) {
             if (!TextUtils.isEmpty(emailET.getText().toString())) {
                 if (!TextUtils.isEmpty(passwordET.getText().toString())) {
-                    firebaseAuth.signInWithEmailAndPassword(emailET.getText().toString(), passwordET.getText().toString())
-                            .addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    setUserDataToDB(emailET.getText().toString(), fullNameET.getText().toString());
-                                } else {
-                                    Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_SHORT).show();
-                                }
-                            });
+                    if (isEmailValid(emailET.getText().toString())) {
+                        if (isPasswordValid(passwordET.getText().toString())){
+                            firebaseAuth.createUserWithEmailAndPassword(emailET.getText().toString(), passwordET.getText().toString())
+                                    .addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
+                                            setUserDataToDB(emailET.getText().toString(), fullNameET.getText().toString());
+                                        } else {
+                                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                                Snackbar.make(view, "Email already exists", Snackbar.LENGTH_SHORT).show();
+                                            } else {
+                                                Snackbar.make(view, "Authentication failed", Snackbar.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }else {
+                            Snackbar.make(view, "Please enter valid password", Snackbar.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Snackbar.make(view, "Please enter valid email", Snackbar.LENGTH_SHORT).show();
+                    }
                 } else {
                     Snackbar.make(view, "Please enter a new password", Snackbar.LENGTH_SHORT).show();
                 }
@@ -92,7 +107,7 @@ public class SignUpActivity extends AppCompatActivity {
         updateUserMap.put("InstalledDate", FieldValue.serverTimestamp());
 
         firestore.collection("Users").document(Objects.requireNonNull(firebaseAuth.getUid()))
-                .update(updateUserMap).addOnCompleteListener(task -> {
+                .set(updateUserMap).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         startActivity(new Intent(this, DashboardActivity.class));
                         finish();
@@ -101,5 +116,37 @@ public class SignUpActivity extends AppCompatActivity {
                                 "" + Objects.requireNonNull(task.getException()).getMessage());
                     }
                 });
+    }
+
+    boolean isEmailValid(String email) {
+        if (email == null || email.isEmpty()) {
+            return false;
+        }
+        String regex = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    boolean isPasswordValid(String password) {
+        if (password == null || password.isEmpty()) {
+            return false;
+        }
+        if (password.length() < 8) {
+            return false;
+        }
+        if (!password.matches(".*[A-Z].*")) {
+            return false;
+        }
+        if (!password.matches(".*[a-z].*")) {
+            return false;
+        }
+        if (!password.matches(".*\\d.*")) {
+            return false;
+        }
+        if (!password.matches(".*[@#$%^&+=].*")) {
+            return false;
+        }
+        return true;
     }
 }
