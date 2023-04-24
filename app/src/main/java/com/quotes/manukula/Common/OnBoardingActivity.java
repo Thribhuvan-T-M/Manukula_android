@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
-import com.quotes.manukula.Auth.LoginActivity;
-import com.quotes.manukula.Auth.Sign_Up_Activity;
+import com.quotes.manukula.Auth.SignUpActivity;
 import com.quotes.manukula.R;
 
 public class OnBoardingActivity extends AppCompatActivity {
@@ -24,7 +21,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         onBoardingButton = findViewById(R.id.onBoarding_Button);
 
         onBoardingButton.setOnClickListener(view -> {
-            Intent onBoardingIntent = new Intent(OnBoardingActivity.this, Sign_Up_Activity.class);
+            Intent onBoardingIntent = new Intent(OnBoardingActivity.this, SignUpActivity.class);
             startActivity(onBoardingIntent);
             finish();
         });
