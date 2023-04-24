@@ -1,4 +1,4 @@
-package com.quotes.manukula.Auth;
+package com.quotes.manukula.Core;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.quotes.manukula.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_dashboard);
     }
 }
