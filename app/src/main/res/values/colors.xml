@@ -10,4 +10,7 @@
 
     <color name="primaryColor">#FFFCC8D1</color>
     <color name="secondaryColor">#FFFFABAB</color>
+    <color name="lightPrimaryColor">#FFFFE1E6</color>
+    <color name="darkPrimaryColor">#FFED8383</color>
+    <color name="grey">#FF757575</color>
 </resources>
