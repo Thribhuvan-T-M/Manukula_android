@@ -23,7 +23,6 @@ import com.quotes.manukula.R;
 public class LanguageFragment extends Fragment {
 
     private RecyclerView langRecycler;
-    private LanguageDataAdapter languageDataAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -47,7 +46,7 @@ public class LanguageFragment extends Fragment {
         langRecycler.setLayoutManager(gridLayoutManager);
         langRecycler.setHasFixedSize(true);
 
-        languageDataAdapter = new LanguageDataAdapter(languageDataModelList);
+        LanguageDataAdapter languageDataAdapter = new LanguageDataAdapter(languageDataModelList);
         loadLangData(languageDataAdapter);
         langRecycler.setAdapter(languageDataAdapter);
     }

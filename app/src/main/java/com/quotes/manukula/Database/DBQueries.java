@@ -15,6 +15,7 @@ import java.util.Objects;
 public class DBQueries {
 
     public static List<LanguageDataModel> languageDataModelList = new ArrayList<>();
+    public static List<LanguageDataModel> categoryDataModelList = new ArrayList<>();
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -26,6 +27,29 @@ public class DBQueries {
             if (task.isSuccessful()) {
                 for (DocumentSnapshot snapshot : task.getResult()) {
                     languageDataModelList.add(new LanguageDataModel(
+                            Objects.requireNonNull(snapshot.get("index")).toString(),
+                            snapshot.getString("image"),
+                            snapshot.getString("title")
+                    ));
+                }
+                adapter.notifyDataSetChanged();
+            } else {
+                Log.e("error",
+                        "" + Objects.requireNonNull(task.getException()).getMessage());
+            }
+        });
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public static void loadCatData(LanguageDataAdapter adapter) {
+        categoryDataModelList.clear();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+        firestore.collection("Category").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (DocumentSnapshot snapshot : task.getResult()) {
+                    categoryDataModelList.add(new LanguageDataModel(
+                            Objects.requireNonNull(snapshot.get("index")).toString(),
                             snapshot.getString("image"),
                             snapshot.getString("title")
                     ));

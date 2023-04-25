@@ -4,10 +4,20 @@ public class LanguageDataModel {
 
     private String image;
     private String title;
+    private String index;
 
-    public LanguageDataModel(String image, String title) {
+    public LanguageDataModel(String index, String image, String title) {
         this.image = image;
         this.title = title;
+        this.index = index;
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 
     public String getImage() {

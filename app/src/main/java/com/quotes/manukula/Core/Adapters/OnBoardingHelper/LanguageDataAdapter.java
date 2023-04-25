@@ -59,7 +59,7 @@ public class LanguageDataAdapter extends RecyclerView.Adapter<LanguageDataAdapte
         private void setLangData(String image, String title) {
             langTitle.setText(title);
             Glide.with(itemView.getContext())
-                    .load(image).apply(new RequestOptions().placeholder(R.drawable.outlined_bg))
+                    .load(image).apply(new RequestOptions().placeholder(R.drawable.button_bg))
                     .into(langImage);
         }
     }
