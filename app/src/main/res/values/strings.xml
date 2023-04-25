@@ -15,4 +15,9 @@
     <string name="already_have_an_account">Already Have An Account?</string>
     <string name="login">Login</string>
     <string name="login_quote">“Inspiration does exist, but it must find you working.”</string>
+    <string name="next">Next</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_your_favorite_language">Choose your favorite language</string>
+    <string name="lang_image">lang_image</string>
 </resources>
