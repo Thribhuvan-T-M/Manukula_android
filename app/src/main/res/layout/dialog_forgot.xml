@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="20dp"
+    android:padding="20dp"
+    android:id="@+id/dialogForgot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/forgotTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_text_bold"
+        android:text="Forgot Password?"
+        android:textColor="#E88383"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/fP_email_login_et"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/outlined_bg"
+        android:ems="10"
+        android:hint="@string/enter_your_email_id"
+        android:inputType="textEmailAddress"
+        android:paddingStart="8dp"
+        android:paddingEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotTitle" />
+
+    <Button
+        android:id="@+id/fP_cancel_BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="@color/darkPrimaryColor"
+        android:fontFamily="@font/sf_pro_text_bold"
+        android:text="Cancel"
+        android:textColor="#F2EEEE"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/fP_Reset_Bt"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <Button
+        android:id="@+id/fP_Reset_Bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/darkPrimaryColor"
+        android:fontFamily="@font/sf_pro_text_bold"
+        android:text="Reset"
+        android:textColor="#F5F2F2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="149dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
