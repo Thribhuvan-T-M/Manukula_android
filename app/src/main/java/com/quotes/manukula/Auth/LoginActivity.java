@@ -71,8 +71,49 @@ public class LoginActivity extends AppCompatActivity {
                 Snackbar.make(view, "Please enter your email id", Snackbar.LENGTH_SHORT).show();
             }
         });
+        
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_forgot, null);
+                EditText emailBox = dialogView.findViewById(R.id.fP_email_login_et);
+                builder.setView(dialogView);
+                AlertDialog dialog = builder.create();
+                dialogView.findViewById(R.id.fP_Reset_Bt).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String userEmail = emailBox.getText().toString();
+                        if (TextUtils.isEmpty(userEmail)) {
+                            Toast.makeText(LoginActivity.this, "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "Check your email", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Unable to send, failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                dialogView.findViewById(R.id.fP_cancel_BT).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
     }
-         //Login Button connection code
+    //Login Button connection code
     private void loginUserFunc(View view) {
         auth.signInWithEmailAndPassword(emailLoginET.getText().toString(), passwordLoginET.getText().toString()).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -84,49 +125,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+}
 
     //Forgot password
 
 
-
-forgotPassword.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_forgot, null);
-        EditText emailBox = dialogView.findViewById(R.fP_email_login_et);
-        builder.setView(dialogView);
-        AlertDialog dialog = builder.create();
-        dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-        String userEmail = emailBox.getText().toString();
-        if (TextUtils.isEmpty(userEmail) && !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
-        Toast.makeText(LoginActivity.this, "Enter your registered email id", Toast.LENGTH_SHORT).show();
-        return;
-        }
-        auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-@Override
-public void onComplete(@NonNull Task<Void> task) {
-        if (task.isSuccessful()){
-        Toast.makeText(LoginActivity.this, "Check your email", Toast.LENGTH_SHORT).show();
-        dialog.dismiss();
-        } else {
-        Toast.makeText(LoginActivity.this, "Unable to send, failed", Toast.LENGTH_SHORT).show();
-        }
-        }
-        });
-        }
-        });
-        dialogView.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-        dialog.dismiss();
-        }
-        });
-        if (dialog.getWindow() != null){
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        }
-        dialog.show();
-        }
-        });
