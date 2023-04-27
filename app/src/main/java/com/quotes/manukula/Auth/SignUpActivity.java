@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.quotes.manukula.Common.OnBoardingActivity;
 import com.quotes.manukula.Core.DashboardActivity;
 import com.quotes.manukula.R;
 
@@ -109,7 +110,7 @@ public class SignUpActivity extends AppCompatActivity {
         firestore.collection("Users").document(Objects.requireNonNull(firebaseAuth.getUid()))
                 .set(updateUserMap).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        startActivity(new Intent(this, DashboardActivity.class));
+                        startActivity(new Intent(this, OnBoardingActivity.class));
                         finish();
                     } else {
                         Log.e("error",
@@ -141,9 +142,6 @@ public class SignUpActivity extends AppCompatActivity {
         if (!password.matches(".*\\d.*")) {
             return false;
         }
-        if (!password.matches(".*[@#$%^&+=].*")) {
-            return false;
-        }
-        return true;
+        return password.matches(".*[@#$%^&+=].*");
     }
 }

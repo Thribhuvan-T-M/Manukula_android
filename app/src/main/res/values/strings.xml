@@ -21,8 +21,10 @@
     <string name="choose_your_favorite_language">Choose your favorite language</string>
     <string name="choose_your_favorite_category">Choose your favorite category</string>
     <string name="lang_image">lang_image</string>
-    <string name="register" >Register</string>
-    <string name="dont_t_have_an_account" >Don\'t have an account?</string>
-    <string name="forgot_password" >Forgot Password?</string>
-    <string name="login_with" >Login With</string>
+    <string name="register">Register</string>
+    <string name="dont_t_have_an_account">Don\'t have an account?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_with">Login With</string>
+    <string name="create_your_profile">Final step, \nCreate your profile</string>
+    <string name="male">Male</string>
 </resources>

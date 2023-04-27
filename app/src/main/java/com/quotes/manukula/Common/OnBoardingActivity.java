@@ -3,6 +3,7 @@ package com.quotes.manukula.Common;
 import static com.quotes.manukula.Database.DBQueries.languageDataModelList;
 import static com.quotes.manukula.Database.DBQueries.loadLangData;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -36,15 +37,21 @@ public class OnBoardingActivity extends AppCompatActivity {
     private void init() {
         onBoardingButton = findViewById(R.id.onBoardingNextButton);
         onBoardingViewPager = findViewById(R.id.onBoardingViewPager);
-        onBoardingViewPager.setUserInputEnabled(true);
+        onBoardingViewPager.setUserInputEnabled(false);
         onBoardingViewPager.setAdapter(new OnBoardingAdapter(this));
     }
 
+    @SuppressLint("SetTextI18n")
     private void mainLogic() {
         onBoardingButton.setOnClickListener(view -> {
             if (onBoardingViewPager.getCurrentItem() == 0) {
+                onBoardingButton.setText("Next");
                 onBoardingViewPager.setCurrentItem(1);
             } else if (onBoardingViewPager.getCurrentItem() == 1) {
+                onBoardingButton.setText("Get started");
+                onBoardingViewPager.setCurrentItem(2);
+            } else if (onBoardingViewPager.getCurrentItem() == 2) {
+                onBoardingButton.setText("Get started");
                 startActivity(new Intent(this, SignUpActivity.class));
             }
         });

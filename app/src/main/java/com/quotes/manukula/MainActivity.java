@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.quotes.manukula.Auth.LoginActivity;
 import com.quotes.manukula.Common.OnBoardingActivity;
 
 public class MainActivity extends AppCompatActivity {

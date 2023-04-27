@@ -7,6 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.quotes.manukula.Core.Fragments.OnBoarding.CategoryFragment;
 import com.quotes.manukula.Core.Fragments.OnBoarding.LanguageFragment;
+import com.quotes.manukula.Core.Fragments.OnBoarding.UserDataFragment;
 
 public class OnBoardingAdapter extends FragmentStateAdapter {
 
@@ -22,12 +23,14 @@ public class OnBoardingAdapter extends FragmentStateAdapter {
                 return new LanguageFragment();
             case 1:
                 return new CategoryFragment();
+            case 2:
+                return new UserDataFragment();
         }
         return new LanguageFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }
