@@ -1,24 +1,24 @@
 package com.quotes.manukula;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.quotes.manukula.Auth.LoginActivity;
-import com.quotes.manukula.Common.OnBoardingActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.quotes.manukula.Core.Activities.DashboardActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         ImageView logo = findViewById(R.id.logo);
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(MainActivity.this, OnBoardingActivity.class));
+            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
             finish();
-        },3000);
+        }, 3000);
     }
 }

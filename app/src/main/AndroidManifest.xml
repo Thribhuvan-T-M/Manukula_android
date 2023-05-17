@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Manukula"
         tools:targetApi="31">
         <activity
-            android:name=".Core.DashboardActivity"
+            android:name=".Core.Activities.DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".Auth.SignUpActivity"

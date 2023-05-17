@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.quotes.manukula.Common.OnBoardingActivity;
-import com.quotes.manukula.Core.DashboardActivity;
 import com.quotes.manukula.R;
 
 import java.util.HashMap;

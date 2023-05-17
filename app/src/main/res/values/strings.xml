@@ -27,4 +27,10 @@
     <string name="login_with">Login With</string>
     <string name="create_your_profile">Final step, \nCreate your profile</string>
     <string name="male">Male</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="echo">Echo</string>
+    <string name="profile">Profile</string>
 </resources>
